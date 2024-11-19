@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
-
-const uri = "mongodb+srv://abdiladifgurhan:KpiS1xf3cm4IGNPX@cluster0.6t2kdm9.mongodb.net/favorite-books?retryWrites=true&w=majority&appName=Cluster0";
+let configDB = require('../config/database.js');
+const uri = configDB.url;
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(uri, {
