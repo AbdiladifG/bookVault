@@ -1,41 +1,152 @@
 <!doctype html>
 <html>
 <head>
-    <title>21 Savage Fan Site</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+   <title>BookVault - Sign Up</title>
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+   <style>
+       body {
+           background-color: rgb(47, 27, 27);
+           color: #fff;
+           font-family: 'Arial', sans-serif;
+           padding-top: 40px;
+       }
+
+       .container {
+           max-width: 400px;
+           margin: 0 auto;
+           padding: 20px;
+       }
+
+       .signup-container {
+           background-color: rgba(255, 255, 255, 0.1);
+           padding: 30px;
+           border-radius: 10px;
+           box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+       }
+
+       h1 {
+           text-align: center;
+           color: #fff;
+           margin-bottom: 30px;
+           font-weight: bold;
+       }
+
+       .fa-sign-in {
+           margin-right: 10px;
+           color: #a67c52;
+       }
+
+       .form-group {
+           margin-bottom: 20px;
+       }
+
+       label {
+           color: #fff;
+           font-weight: 500;
+           margin-bottom: 8px;
+       }
+
+       .form-control {
+           background-color: rgba(255, 255, 255, 0.1);
+           border: 1px solid #a67c52;
+           color: #fff;
+           height: 45px;
+           font-size: 16px;
+           transition: all 0.3s ease;
+       }
+
+       .form-control:focus {
+           background-color: rgba(255, 255, 255, 0.15);
+           border-color: #a67c52;
+           box-shadow: 0 0 8px rgba(166, 124, 82, 0.4);
+           color: #fff;
+       }
+
+       .btn-warning {
+           background-color: #a67c52;
+           border: none;
+           width: 100%;
+           padding: 12px;
+           font-size: 16px;
+           font-weight: bold;
+           margin-top: 10px;
+           transition: all 0.3s ease;
+       }
+
+       .btn-warning:hover, .btn-warning:focus {
+           background-color: #8e6544;
+           transform: translateY(-2px);
+       }
+
+       hr {
+           border-color: rgba(166, 124, 82, 0.3);
+           margin: 25px 0;
+       }
+
+       p {
+           text-align: center;
+           margin: 10px 0;
+           color: #fff;
+       }
+
+       a {
+           color: #a67c52;
+           text-decoration: none;
+           transition: color 0.3s ease;
+       }
+
+       a:hover {
+           color: #8e6544;
+           text-decoration: none;
+       }
+
+       .alert-danger {
+           background-color: rgba(169, 68, 66, 0.2);
+           border-color: rgba(169, 68, 66, 0.3);
+           color: #fff;
+       }
+
+       @media (max-width: 768px) {
+           .container {
+               padding: 15px;
+           }
+           
+           .signup-container {
+               padding: 20px;
+           }
+       }
+   </style>
 </head>
+
 <body>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
+   <div class="container">
+       <div class="signup-container">
+           <h1><span class="fa fa-sign-in"></span> Sign Up</h1>
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+           <% if (message.length > 0) { %>
+           <div class="alert alert-danger"><%= message %></div>
+           <% } %>
 
-    <% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
+           <!-- SIGNUP FORM -->
+           <form action="/signup" method="post">
+               <div class="form-group">
+                   <label>Email</label>
+                   <input type="text" class="form-control" name="email" placeholder="Enter your email">
+               </div>
+               <div class="form-group">
+                   <label>Password</label>
+                   <input type="password" class="form-control" name="password" placeholder="Choose a password">
+               </div>
 
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
+               <button type="submit" class="btn btn-warning btn-lg">Sign Up</button>
+           </form>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
+           <hr>
 
-    <hr>
-
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
-
-</div>
-</div>
+           <p>Already have an account? <a href="/login">Login</a></p>
+           <p>Or go <a href="/">home</a>.</p>
+       </div>
+   </div>
 </body>
 </html>

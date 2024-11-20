@@ -1,3 +1,6 @@
+## View Website
+1. Travel to https://favoritebooks.up.railway.app/
+
 ## Installation
 
 1. Clone repo
@@ -8,6 +11,5 @@
 1. run `node server.js`
 2. Navigate to `localhost:8080`
 
-## Credit
+![Alt text](<website.png>)
 
-Modified from Scotch.io's auth tutorial
