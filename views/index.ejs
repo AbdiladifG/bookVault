@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Our Platform</title>
+    <title>BookVault - Your Personal Library</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
       body,
       html {
@@ -11,56 +12,84 @@
         padding: 0;
         font-family: "Arial", sans-serif;
         line-height: 1.6;
+        box-sizing: border-box;
       }
 
       .header {
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: rgb(47, 27, 27);  /* Darker, more muted color */
         padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-sizing: border-box;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
       .logo {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
-        color: #333;
+        color: #ffffff;
         text-decoration: none;
       }
 
       .nav-links {
         display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .nav-links a.nav-item {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a.nav-item:hover {
+        color: #e0e0e0;
+      }
+
+      .auth-buttons {
+        display: flex;
         gap: 1rem;
       }
 
-      .nav-links a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-      }
-
-      .a {
-        text-decoration: none;
-      }
-
       .button {
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 1.5rem;
         border: none;
-        border-radius: 4px;
+        border-radius: 25px;
         cursor: pointer;
         font-weight: bold;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        font-size: 0.9rem;
       }
 
       .login-btn {
-        background-color: #f0f0f0;
-        color: #333;
+        background-color: transparent;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+      }
+
+      .login-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
       }
 
       .signup-btn {
-        background-color: #4caf50;
+        background-color: #c19a6b;  /* Brown color to match leather theme */
         color: white;
+      }
+
+      .signup-btn:hover {
+        background-color: #a67c52;
       }
 
       .hero {
@@ -68,93 +97,145 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: calc(100vh - 70px);
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        color: white;
+        position: relative;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.7)
+        );
       }
 
       .hero-content {
-        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+        text-align: center;
+        color: white;
+        max-width: 800px;
         padding: 2rem;
-        border-radius: 8px;
       }
 
       .hero h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .hero p {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        color: #ecf0f1;
+      }
+
+      .features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
         margin-bottom: 2rem;
       }
 
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .feature i {
+        color: #c19a6b;
+      }
+
       .get-started-btn {
-        background-color: #4caf50;
+        background-color: #c19a6b;
         color: white;
         font-size: 1.2rem;
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
       }
 
       .get-started-btn:hover {
-        background-color: #45a049;
-      }
-      .a {
-        text-decoration: none;
-      }
-
-      .button-link {
-        display: inline-block;
-        text-decoration: none;
-        padding: 5px 10px;
-        font-size: 16px;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+        background-color: #a67c52;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(193, 154, 107, 0.4);
       }
 
-      .button-link:hover {
-        background-color: #005f73;
-      }
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+          gap: 1rem;
+        }
 
-      /* Update the existing bookmark-btn style to match */
-      .bookmark-btn {
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+        }
 
-      .bookmark-btn:hover {
-        background-color: #005f73;
+        .auth-buttons {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .features {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     </style>
   </head>
   <body>
     <header class="header">
-      <a href="#" class="logo">YourLogo</a>
-      <i id="delete" class="fa fa-trash"></i>
-      <nav class="nav-links">
-        <a href="#">Home</a>
-        <button class="button login-btn"><a href="/Login">Login</a></button>
-        <button class="button signup-btn"><a href="/signup">Sign Up</a></button>
-      </nav>
+      <div class="nav-container">
+        <a href="#" class="logo">BookVault</a>
+        <nav class="nav-links">
+          <a href="/home" class="nav-item">Home</a>
+          <div class="auth-buttons">
+            <a href="/login" class="button login-btn">Login</a>
+            <a href="/signup" class="button signup-btn">Sign Up</a>
+          </div>
+        </nav>
+      </div>
     </header>
 
     <main class="hero">
       <div class="hero-content">
-        <h1>Welcome to Our Platform</h1>
-        <p>Discover amazing features and boost your productivity.</p>
-        <button class="button get-started-btn">
-          <a href="/signup" class="button-link">Get Started</a>
-        </button>
+        <h1>Your Personal Book Collection</h1>
+        <p>Discover, save, and organize your favorite books in one place</p>
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-search"></i>
+            <span>Search Books</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-bookmark"></i>
+            <span>Save Favorites</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-book-reader"></i>
+            <span>Track Reading Progress</span>
+          </div>
+        </div>
+        <a href="/signup" class="get-started-btn">Get Started</a>
       </div>
     </main>
   </body>
