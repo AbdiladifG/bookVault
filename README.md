@@ -1,5 +1,12 @@
+## BookVault
+I am an avid reader and I wanted a place to save the titles of my favorite books somewhere. One of my favorites that I've read recently is the Alchemist by by Paulo Coelho
+
 ## View Website
-1. Travel to https://favoritebooks.up.railway.app/
+Travel to https://favoritebooks.up.railway.app/
+
+## How its made
+
+Tech used: CSS, JavaScript, EJS, Node.js, Express, MongoDB
 
 ## Installation
 
